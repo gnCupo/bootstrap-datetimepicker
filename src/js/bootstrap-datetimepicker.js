@@ -1485,6 +1485,17 @@
             return picker;
         };
 
+        picker.maxTries = function (maxTries) {
+            if (arguments.length === 0) {
+                return options.maxTries;
+            }
+            if (typeof maxTries !== 'number') {
+                throw new TypeError('maxTries () expects a number parameter');
+            }
+            options.maxTries = maxTries;
+            return picker;
+        };
+
         picker.options = function (newOptions) {
             if (arguments.length === 0) {
                 return $.extend(true, {}, options);
@@ -2512,6 +2523,7 @@
         },
         widgetParent: null,
         ignoreReadonly: false,
+        maxTries: 7,
         keepOpen: false,
         focusOnShow: true,
         inline: false,
